@@ -100,7 +100,7 @@ public class T14_PhoneBookTest {
 
 			displayMenu(); // 메뉴 출력
 
-			int menuNum = scan.nextInt(); // 메뉴 번호 입력
+			int menuNum = Integer.parseInt(scan.nextLine()); // 메뉴 번호 입력
 
 			switch (menuNum) {
 			case 1:
@@ -154,20 +154,20 @@ public class T14_PhoneBookTest {
 	}
 
 	/*
-	 *  이름을 이용한 전화번호 정보를 검색하는 메서드
+	 * 이름을 이용한 전화번호 정보를 검색하는 메서드
 	 */
 	private void search() {
 		System.out.println();
 		System.out.println("검색할 전화번호 정보를 입력하세요.");
 		System.out.print("이름 >> ");
 		String name = scan.next();
-		
+
 		Phone p = phoneBookMap.get(name);
-		
-		if(p == null) {
+
+		if (p == null) {
 			System.out.println(name + "씨의 전화번호 정보가 없습니다.");
 			return;
-		}else {
+		} else {
 			System.out.println(name + "씨의 전화번호 정보");
 			System.out.println("이     름 : " + p.getName());
 			System.out.println("전화번호 : " + p.getTel());
@@ -177,19 +177,19 @@ public class T14_PhoneBookTest {
 	}
 
 	/*
-	 *  전화번호 정보를 삭제하는 메서드
+	 * 전화번호 정보를 삭제하는 메서드
 	 */
 	private void delete() {
 		System.out.println();
 		System.out.println("삭제할 전화번호 정보를 입력하세요.");
 		System.out.print("이름 >> ");
 		String name = scan.next();
-		
-		//remove(key) => 삭제 성공하면 삭제된 value값을 반환하고 실패하면 null을 반환함
-		if(phoneBookMap.remove(name) == null) {
-			System.out.println(name +"씨는 등록된 사람이 아닙니다.");
+
+		// remove(key) => 삭제 성공하면 삭제된 value값을 반환하고 실패하면 null을 반환함
+		if (phoneBookMap.remove(name) == null) {
+			System.out.println(name + "씨는 등록된 사람이 아닙니다.");
 			return;
-		}else {
+		} else {
 			System.out.println(name + "씨 정보를 삭제했습니다.");
 		}
 		System.out.println("삭제 작업 완료...");
@@ -203,24 +203,24 @@ public class T14_PhoneBookTest {
 		System.out.println("수정할 전화번호 정보를 입력하세요.");
 		System.out.print("이름 >> ");
 		String name = scan.next();
-		
-		//수정할 자료가 있는지 검사
-		if(phoneBookMap.get(name) == null) {
-			System.out.println(name +"씨의 전화번호 정보가 없습니다.");
+
+		// 수정할 자료가 있는지 검사
+		if (phoneBookMap.get(name) == null) {
+			System.out.println(name + "씨의 전화번호 정보가 없습니다.");
 			return;
 		}
-		
+
 		System.out.print("전화번호 >> ");
 		String tel = scan.next();
-		
+
 		System.out.print("주소 >> ");
 		scan.nextLine();
-		
+
 		String addr = scan.nextLine();
-		
+
 		Phone p = new Phone(name, tel, addr);
-		phoneBookMap.put(name, p);//같은 key값에 데이터를 저장하면 value값이 변경된다.
-		
+		phoneBookMap.put(name, p);// 같은 key값에 데이터를 저장하면 value값이 변경된다.
+
 		System.out.println(name + "씨 정보 수정 완료...");
 	}
 
