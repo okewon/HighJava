@@ -13,13 +13,8 @@ import java.util.List;
  ※ 와일드카드와 타입파라미터의 특징:
 1. 동일한 파라미터 타입으로 강제하고 싶은 경우.
    (타입 파라미터가 한개만 사용될 경우에는 둘 중 아무거나 사용해도 동일함)
-ex) public static <T extends Number> void copy(List<T> dest, 
-												List<T> src) 
-	=> 메서드의 파라미터타입을 동일한 타입으로 강제함.
-	
-    public static void copy(List<? extends Number> dest, 
-    						List<? extends Number> src) 
-    	=> 동일 타입으로 강제하지 않음.(unsafe type)
+ex) public static <T extends Number> void copy(List<T> dest, List<T> src) => 메서드의 파라미터타입을 동일한 타입으로 강제함.
+    public static void copy(List<? extends Number> dest, List<? extends Number> src) => 동일 타입으로 강제하지 않음.(unsafe type)
 
 2. Type parameters 는 하한 제한만 가능 (와일드 카드는 상한, 하한 가능)
 ex) public void print(List<? super Integer> list)  // OK
@@ -38,8 +33,8 @@ public class T06_WildCardTest {
 		appleBox.add(new Apple());
 		appleBox.add(new Apple());
 		
-		Juicer.makeJuice(fruitBox);
-		Juicer.makeJuice(appleBox); // 와일드카드를 이용한 지네릭타입의 확장으로 에러 해결가능
+		Juicer.makeJuice(fruitBox);  // 과일상자인 경우에는 아무런 문제 없음
+		//Juicer.makeJuice(appleBox); // 와일드카드를 이용한 지네릭타입의 확장으로 에러 해결가능
 		
 	}
 }
@@ -48,12 +43,12 @@ public class T06_WildCardTest {
  * 쥬서
  */
 class Juicer{
-	//static <T extends Fruit> void makeJuice(FruitBox<T> box) { // 제너릭 타입 객체를 파라미터에 사용시 문제점 발생함.
+	static void makeJuice(FruitBox<Fruit> box) { // 제너릭 타입 객체를 파라미터에 사용시 문제점 발생함.
 		                                         // 지네릭 타입이 다른 것만으로는 오버로딩이 성립하지 않음 => 컴파일 후 제거됨.=> 메서드 중복정의
 		                                         // 와일드 카드를 이용하여 해결가능.
     
-	static void makeJuice(FruitBox<? extends Fruit> box) {  // 와일드카드를 이용
-	//static <T extends Fruit> void makeJuice(FruitBox<T> box) { // 지네릭 메서드(제한된 타입 파라미터) 이용
+	//static void makeJuice(FruitBox<? extends Fruit> box) {  // 와일드카드를 이용하여 제너릭 타입의 객체 참조
+	//static <T extends Fruit> void makeJuice(FruitBox<T> box) { // 지네릭 메서드(제한된 타입 파라미터)로 선언함.
 	
 		String fruitListStr = ""; // 과일목록 
 		
@@ -68,9 +63,7 @@ class Juicer{
 		}
 		
 		System.out.println(fruitListStr + "=> 쥬스완성!");
-		
 	}
-
 }
 
 /*

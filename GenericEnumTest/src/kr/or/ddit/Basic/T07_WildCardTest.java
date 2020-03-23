@@ -1,5 +1,7 @@
 package kr.or.ddit.Basic;
 
+import java.util.Arrays;
+
 public class T07_WildCardTest {
 /*
  * 	와일드 카드 예제
@@ -8,6 +10,67 @@ public class T07_WildCardTest {
  * 	<? super T> => 와일드 카드의 하한 제한. T와 그 조상들만 가능 <Object 제외>
  * 	<?>			=> 모든 타입이 가능 <? extends Object>와 동일
  */
+	
+	/*
+	 * 모든 과정 등공
+	 * @param course 모든 과정
+	 */
+	
+	public static void registerCourse(Course<?> course) {
+		System.out.println(course.getName() + " 수강생 : " + Arrays.toString(course.getStudents()));
+	}
+	
+	/*
+	 * 학생 과정 등록
+	 * @param course
+	 */
+	public static void registerCourseStudent(Course<? extends Student> course) {
+		System.out.println(course.getName() + " 수강생 : " + Arrays.toString(course.getStudents()));
+	}
+	
+	/*
+	 * 직장인 과정
+	 * @param course 
+	 */
+	public static void registerCourseWorker(Course<? super Worker> course) {
+		System.out.println(course.getName() + " 수강생 : " + Arrays.toString(course.getStudents()));
+	}
+	
+	public static void main(String[] args) {
+		Course<Person> personCourse = new Course("일반인 과정", 5);
+		personCourse.add(new Person("일반인1"));
+		personCourse.add(new Person("직장인1"));
+		personCourse.add(new Person("학생1"));
+		personCourse.add(new Person("고등학생1"));
+		
+		Course<Worker> workerCourse = new Course("직장인과정", 5);
+		workerCourse.add(new Worker("직장인1"));
+		
+		Course<Student> studentCourse = new Course("학생과정", 5);
+		studentCourse.add(new Student("학생1"));
+		studentCourse.add(new Student("고등학생1"));
+		
+		Course<HighStudent> highStudentCourse = new Course("고등학생과정", 5);
+		highStudentCourse.add(new HighStudent("고등학생1"));
+		
+		registerCourse(personCourse);
+		registerCourse(workerCourse);
+		registerCourse(studentCourse);
+		registerCourse(highStudentCourse);
+		System.out.println("---------------------------------------------------------------------");
+		
+//		registerCourseStudent(personCourse);
+//		registerCourseStudent(workerCourse);
+		registerCourseStudent(studentCourse);
+		registerCourseStudent(highStudentCourse);
+		System.out.println("---------------------------------------------------------------------");
+		
+		registerCourseWorker(personCourse);
+		registerCourseWorker(workerCourse);
+//		registerCourseWorker(studentCourse);
+//		registerCourseWorker(highStudentCourse);
+		
+	}
 }
 //일반인
 class Person{
