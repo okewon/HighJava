@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 import kr.or.ddit.util.DBUtil;
+import kr.or.ddit.util.DBUtil2;
 
 /*
 	회원정보를 관리하는 프로그램을 작성하는데 
@@ -99,7 +100,7 @@ public class T05_MemberInfoTest {
 		String memId = scan.next();
 		
 		try {
-			conn = DBUtil.getConnection();
+			conn = DBUtil2.getConnection();
 			
 			String sql = "delete from mymember where mem_id = ?";
 			
