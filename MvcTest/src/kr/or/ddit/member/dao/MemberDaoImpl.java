@@ -1,4 +1,4 @@
-package kr.or.ddit.basic;
+package kr.or.ddit.member.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.or.ddit.member.vo.MemberVO;
 import kr.or.ddit.util.DBUtil;
 
 

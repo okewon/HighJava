@@ -1,9 +1,17 @@
-package kr.or.ddit.basic;
+package kr.or.ddit.member.dao;
 
 import java.util.List;
 
-public interface IMemberService {
-	
+import kr.or.ddit.member.vo.MemberVO;
+
+/*
+ * 
+ * 실제 DB와 연결해서 SQL문을 수행 후 결과를 작성하여 Service에 전달하는 DAO의 interface	
+ * @author Ock
+ * 
+ * 
+ */
+public interface IMemberDao {
 	/*
 	 * MemberVO에 담겨진 자료를 DB에 insert하는 메서드
 	 * @param mv DB에 insert할 자료가 저장된 MemberVO객체
