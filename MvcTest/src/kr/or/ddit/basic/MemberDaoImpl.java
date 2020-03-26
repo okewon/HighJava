@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.or.ddit.util.DBUtil;
-import kr.or.ddit.util.DBUtil2;
 
 
 public class MemberDaoImpl implements IMemberDao {
@@ -136,7 +135,7 @@ public class MemberDaoImpl implements IMemberDao {
 	public int deleteMember(String memId) {
 		int cnt = 0;
 		try {
-			conn = DBUtil2.getConnection();
+			conn = DBUtil.getConnection();
 			
 			String sql = "delete from mymember where mem_id = ?";
 			
