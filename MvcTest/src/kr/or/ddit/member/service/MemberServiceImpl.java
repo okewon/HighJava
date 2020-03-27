@@ -40,4 +40,9 @@ public class MemberServiceImpl implements IMemberService {
 		return memDao.deleteMember(memId);
 	}
 
+	@Override
+	public List<MemberVO> getSearchMember(MemberVO mv) {
+		return memDao.getSearchMember(mv);
+	}
+
 }

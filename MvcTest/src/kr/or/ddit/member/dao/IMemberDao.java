@@ -45,4 +45,11 @@ public interface IMemberDao {
 	 * @return 작업성공 : 1, 작업실패 : 0
 	 */
 	public int deleteMember(String memId);
+	
+	/*
+	 * MemberVO에 담긴 자료를 이용하여 회원을 검색하는 메서드
+	 * @param mv 검색할 자료가 들어있는 MemberVO 객체
+	 * @return 검색된 결과를 담은 List
+	 */
+	public List<MemberVO> getSearchMember(MemberVO mv);
 }
