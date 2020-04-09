@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox spacing = "50" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<TextField preWidth = "200"/>
+		<Button text = "확인"/>
+	</children>
+	<padding>
+		<insets botton = "10" top = "10" right = "10" left = "10"/>
+	</padding>
+</HBox>	
+
