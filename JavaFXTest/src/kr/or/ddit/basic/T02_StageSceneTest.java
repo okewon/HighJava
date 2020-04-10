@@ -3,7 +3,6 @@ package kr.or.ddit.basic;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -31,18 +30,19 @@ public class T02_StageSceneTest extends Application{
 		
 		//버튼에 대한 클릭 이벤트 처리
 		//방법1 => 람다식을 사용하지 않은 경우
-		button.setOnAction(new EventHandler<ActionEvent>() {
+		/*button.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
 			public void handle(ActionEvent event) {
 				//처리할 내용을 기술하는 영역
 				Platform.exit();//프로그램 종료
 			}
-		});
+		});*/
 		
 		//VBox에 컨트롤들 추가하기
-		root.getChildren().add(label);
-		root.getChildren().add(button);
+//		root.getChildren().add(label);
+//		root.getChildren().add(button);
+		root.getChildren().addAll(label, button);
 		
 		//VBox를 루트 컨테이너로 하는 Scene객체 생성
 		Scene scene = new Scene(root);
@@ -50,6 +50,11 @@ public class T02_StageSceneTest extends Application{
 		primaryStage.setTitle("Stage와 Scene연습");//창제목
 		primaryStage.setScene(scene);//Stage에 Scene 설정
 		primaryStage.show();//창(Stage)보이기
+		
+		//방법2 => 람다식 사용하는 경우...
+		button.setOnAction((ActionEvent event) -> {
+			Platform.exit();//프로그램 종료
+		});
 	}
 	
 	public static void main(String[] args) {
