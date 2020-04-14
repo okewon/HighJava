@@ -32,7 +32,8 @@ public class T09_ComboBoxTest extends Application{
 		combo.valueProperty().addListener(new ChangeListener<String>() {
 
 			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+			public void changed(ObservableValue<? extends String> observable,
+					String oldValue, String newValue) {
 //				String temp =  combo.getItems().get(0); //첫번째 컬럼 가져오기
 				txtArea.setText(newValue);
 			}
