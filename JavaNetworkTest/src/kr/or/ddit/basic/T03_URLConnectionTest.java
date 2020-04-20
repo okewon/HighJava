@@ -34,7 +34,7 @@ public class T03_URLConnectionTest {
 			String key = iterator.next();
 			System.out.println(key + " : " + headerMap.get(key));
 		}
-		System.out.println("-----------------------------------------------------------");
+		System.out.println("--------------------------------------------");
 		
 		//해당 호스트의 페이지 내용 가져오기
 		
